@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
+using UnderveilModLoader;
 using UnityEngine;
 
 namespace UnderveilExampleMod.Events
@@ -10,42 +11,49 @@ namespace UnderveilExampleMod.Events
         // Far above the game's own event ids.
         private const int EventId = 90001;
 
+        // {mod id}.{file name}.{key} from assets/lang/<locale>/shrine.json
+        private const string Text = "UnderveilExampleMod.shrine.";
+
+        private const int BloodHpCost = 5;
+        private const int BloodGold = 50;
+        private const int GoldCost = 30;
+        private const int GoldMaxHp = 3;
+
         internal static EventData Create(Sprite artwork)
         {
             EventData data = ScriptableObject.CreateInstance<EventData>();
             data.eventId = EventId;
-            // LocalizationHelper returns unknown keys as they are, so plain text works here.
-            data.eventName = "Forgotten Shrine";
+            data.eventName = Text + "name";
             data.artwork = artwork;
-            data.description = "A small shrine stands by the road. Its bowl is empty, but it seems to be waiting for something.";
+            data.description = Text + "description";
             data.choices = new List<EventChoice>
             {
                 new EventChoice
                 {
-                    choiceText = "Offer blood. Lose 5 HP and gain 50 gold.",
-                    requiredHp = 6,
+                    choiceText = (Text + "choice.blood").Format(BloodHpCost.ToString(), BloodGold.ToString()),
+                    requiredHp = BloodHpCost + 1,
                     outcomes = new List<EventOutcome>
                     {
-                        new EventOutcome { type = EventOutcome.Type.LoseHp, value = 5 },
-                        new EventOutcome { type = EventOutcome.Type.GainGold, value = 50, resultText = "Coins spill from the empty bowl." }
+                        new EventOutcome { type = EventOutcome.Type.LoseHp, value = BloodHpCost },
+                        new EventOutcome { type = EventOutcome.Type.GainGold, value = BloodGold, resultText = Text + "result.blood" }
                     }
                 },
                 new EventChoice
                 {
-                    choiceText = "Offer gold. Gain 3 max HP.",
-                    requiredGold = 30,
+                    choiceText = (Text + "choice.gold").Format(GoldCost.ToString(), GoldMaxHp.ToString()),
+                    requiredGold = GoldCost,
                     outcomes = new List<EventOutcome>
                     {
-                        new EventOutcome { type = EventOutcome.Type.LoseGold, value = 30 },
-                        new EventOutcome { type = EventOutcome.Type.GainMaxHp, value = 3, resultText = "A quiet warmth settles in your chest." }
+                        new EventOutcome { type = EventOutcome.Type.LoseGold, value = GoldCost },
+                        new EventOutcome { type = EventOutcome.Type.GainMaxHp, value = GoldMaxHp, resultText = Text + "result.gold" }
                     }
                 },
                 new EventChoice
                 {
-                    choiceText = "Walk away.",
+                    choiceText = Text + "choice.leave",
                     outcomes = new List<EventOutcome>
                     {
-                        new EventOutcome { type = EventOutcome.Type.None, resultText = "You leave the shrine undisturbed." }
+                        new EventOutcome { type = EventOutcome.Type.None, resultText = Text + "result.leave" }
                     }
                 }
             };

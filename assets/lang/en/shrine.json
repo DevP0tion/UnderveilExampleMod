@@ -1,0 +1,10 @@
+{
+  "name": "Forgotten Shrine",
+  "description": "A small shrine stands by the road. Its bowl is empty, but it seems to be waiting for something.",
+  "choice.blood": "Offer blood. Lose {0} HP and gain {1} gold.",
+  "choice.gold": "Offer {0} gold. Gain {1} max HP.",
+  "choice.leave": "Walk away.",
+  "result.blood": "Coins spill from the empty bowl.",
+  "result.gold": "A quiet warmth settles in your chest.",
+  "result.leave": "You leave the shrine undisturbed."
+}

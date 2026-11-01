@@ -16,5 +16,9 @@
   </ItemGroup>
   <Target Name="CopyToMods" AfterTargets="Build">
     <Copy SourceFiles="$(TargetPath);mod.json" DestinationFolder="$(GameDir)\Mods\UnderveilExampleMod" />
+    <ItemGroup>
+      <ModAssets Include="assets\**\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ModAssets)" DestinationFolder="$(GameDir)\Mods\UnderveilExampleMod\assets\%(RecursiveDir)" />
   </Target>
 </Project>

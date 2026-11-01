@@ -9,6 +9,7 @@
 - `mod.json`: 모드 정보
 - `UnderveilExampleMod.cs`: `IMod` 진입점, 로그 출력, `GameManager.Start` Harmony 패치
 - `Events/ExampleEvent.cs`: 이벤트 풀에 새 이벤트 "Forgotten Shrine" 추가
+- `assets/lang/<언어 코드>/shrine.json`: 이벤트 문구 번들. `UnderveilExampleMod.shrine.name`처럼 `{모드 id}.{파일명}.{키}`로 찾습니다.
 
 ## 빌드
 
@@ -18,7 +19,7 @@ Underveil Mod Loader가 설치된 게임과 .NET SDK가 필요합니다. 참조 
 dotnet build -c Release -p:GameDir="C:\path\to\Underveil Demo"
 ```
 
-빌드하면 DLL과 `mod.json`이 게임 폴더의 `Mods/UnderveilExampleMod`로 복사됩니다. 게임을 끄고 빌드한 뒤 다시 실행하면 모드 창에 나타납니다.
+빌드하면 DLL, `mod.json`, `assets`가 게임 폴더의 `Mods/UnderveilExampleMod`로 복사됩니다. 게임을 끄고 빌드한 뒤 다시 실행하면 모드 창에 나타납니다.
 
 ## 라이선스
 
