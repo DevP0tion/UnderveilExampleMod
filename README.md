@@ -8,7 +8,7 @@
 
 - `mod.json`: 모드 정보
 - `UnderveilExampleMod.cs`: `IMod` 진입점, 로그 출력, `GameManager.Start` Harmony 패치
-- `Events/ExampleEvent.cs`: 이벤트 풀에 새 이벤트 "Forgotten Shrine" 추가
+- `Events/ExampleEvent.cs`: `ModEvent` 상속과 `[Register]`로 이벤트 풀에 새 이벤트 "Forgotten Shrine" 추가
 - `assets/lang/<언어 코드>/shrine.json`: 이벤트 문구 번들. `UnderveilExampleMod.shrine.name`처럼 `{모드 id}.{파일명}.{키}`로 찾습니다.
 
 ## 빌드
