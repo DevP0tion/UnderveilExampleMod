@@ -1,0 +1,9 @@
+{
+  "id": "UnderveilExampleMod",
+  "name": "UnderveilExampleMod",
+  "version": "1.0.0",
+  "author": "Underveil Mod Loader",
+  "description": "Underveil Mod Loader용 예시 모드입니다. 로그 출력, Harmony 패치, 새 이벤트 추가 방법을 보여 줍니다.",
+  "dll": "UnderveilExampleMod.dll",
+  "dependencies": []
+}
